@@ -1,0 +1,15 @@
+---
+chrony_packages:
+  - chrony
+
+chrony_pools:
+  - name: 2.rhel.pool.ntp.org
+    option: iburst
+
+chrony_servers: []
+chrony_driftfile: /var/lib/chrony/drift
+chrony_makestep: 1.0 3
+chrony_rtcsync: true
+chrony_keyfile: ""
+chrony_leapsectz: right/UTC
+chrony_logdir: /var/log/chrony

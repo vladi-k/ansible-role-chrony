@@ -1,0 +1,20 @@
+---
+- name: Install chrony packages
+  ansible.builtin.package:
+    name: "{{ chrony_packages }}"
+
+- name: Generate /etc/chrony.conf
+  ansible.builtin.template:
+    src: etc/chrony.conf
+    dest: /etc/chrony.conf
+    owner: root
+    group: root
+    mode: '0444'
+  notify:
+    - restart chrony
+
+- name: Enable and start chrony
+  ansible.builtin.service:
+    name: chronyd
+    state: started
+    enabled: true
